@@ -1,47 +1,47 @@
 digraph LoadProcess {
-	rankdir="LR";
+    rankdir="LR";
     fontname="DIN Alternate";
     fontsize="11";
     // fontcolor="gray";
     node[style="filled", fontname="DIN Alternate", fontsize="11"];
     edge[arrowsize="0.75", fontname="DIN Alternate", fontsize="9"];
-	subgraph cluster_0 {
-		style=filled;
-		color="#ffbf69";
-		node [style=filled,color=white];
-		"web app"
-		label = "Frontend";
-	}
+    subgraph cluster_0 {
+        style=filled;
+        color="#ffbf69";
+        node [style=filled,color=white];
+        "web app"
+        label = "Frontend";
+    }
 
-	subgraph cluster_1 {
-		style=filled;
-		color="#cbf3f0";
-		node [style=filled,color=white];
-		"api"
-		"core entries data"
-		"user interactive data"
-		"data cache"
-		label = "Backend";
-	}
+    subgraph cluster_1 {
+        style=filled;
+        color="#cbf3f0";
+        node [style=filled,color=white];
+        "api"
+        "core entries data"
+        "user interactive data"
+        "data cache"
+        label = "Backend";
+    }
 
-	subgraph cluster_2 {
-		style=filled;
-		color="#98c1d9";
-		node [style=filled,color=white];
-		"GitHub OAuth"
-		label = "Authentication";
-	}
+    subgraph cluster_2 {
+        style=filled;
+        color="#98c1d9";
+        node [style=filled,color=white];
+        "GitHub OAuth"
+        label = "Authentication";
+    }
 
-	"users" -> "web app"
+    "users" -> "web app"
 
-	"web app" -> "GitHub OAuth"
-	"web app" -> "api"  -> {"core entries data", "user interactive data", "data cache"}
-	
-	edge[arrowsize="0.5", fontname="DIN Alternate", fontsize="9", style=dashed];
-	"core entries data" -> "GitHub DB"
-	"user interactive data" -> "NoSQL DB"
-	"data cache" -> "Redis"
+    "web app" -> "GitHub OAuth"
+    "web app" -> "api"  -> {"core entries data", "user interactive data", "data cache"}
+    
+    edge[arrowsize="0.5", fontname="DIN Alternate", fontsize="9", style=dashed];
+    "core entries data" -> "GitHub DB"
+    "user interactive data" -> "NoSQL DB"
+    "data cache" -> "Redis"
 
-	"users" [shape=egg, fillcolor="#ee6c4d", color="white", fontcolor="white"];
-	"GitHub DB", "NoSQL DB", "Redis" [shape=box, fillcolor="#ee6c4d", color="white", fontcolor="white"];
+    "users" [shape=egg, fillcolor="#ee6c4d", color="white", fontcolor="white"];
+    "GitHub DB", "NoSQL DB", "Redis" [shape=box, fillcolor="#ee6c4d", color="white", fontcolor="white"];
 }
